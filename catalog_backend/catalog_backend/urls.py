@@ -19,12 +19,11 @@ from django.urls import path, include
 from rest_framework import routers
 from catalog_backend.catalog_backend.views import HealthCheck
 
-#router = routers.DefaultRouter()
-#router.register(r'catalog', HealthCheck)
+# router = routers.DefaultRouter()
+# router.register(r'catalog', HealthCheck)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('healthcheck/', HealthCheck.as_view())
+    path("admin/", admin.site.urls),
+    path("healthcheck/", HealthCheck.as_view()),
 ]
-

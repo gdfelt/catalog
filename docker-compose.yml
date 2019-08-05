@@ -1,23 +1,29 @@
 version: '3.7'
 services:
-#  frontend:
-#    build:
-#      context: ./catalog_frontend
-#      dockerfile: Dockerfile
-#    depends_on:
-#      - backend
+  frontend:
+    build:
+      context: ./catalog_frontend
+      dockerfile: Dockerfile
+    image: catalog_frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend
 
   backend:
     build:
       context: ./catalog_backend
       dockerfile: Dockerfile
-    depends_on:
-      - database
+    image: catalog-backend
     ports:
       - 8000:8000
+    depends_on:
+      - database
 
   database:
     image: postgres:11.4
+    ports:
+      - 5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
