@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.7-slim-buster
 
 EXPOSE 8000
 
@@ -8,14 +8,16 @@ WORKDIR /usr/src/app
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV ENV DOCKER
 
+RUN apt-get update && apt-get upgrade -y
+
+COPY ./requirements.txt .
 
 RUN pip install --upgrade pip
-RUN pip install pipenv
-COPY ./Pipfile /usr/src/app/Pipfile
-RUN pipenv install --skip-lock --system --dev
+RUN pip install -r requirements.txt
 
 # copy project
 COPY . /usr/src/app/
 
-CMD ["gunicorn", "catalog_backend.wsgi:application", "--name", "catalog", "--bind", "0.0.0.0:8000"]
+CMD ["bash", "entrypoint.sh"]

@@ -23,7 +23,12 @@ services:
   database:
     image: postgres:11.4
     ports:
-      - 5432
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=django
+## I know this isn't cool. Need to find a better way to set password ##
+      - POSTGRES_PASSWORD=django
+      - POSTGRES_DB=catalog
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
