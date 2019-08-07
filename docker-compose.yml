@@ -4,7 +4,7 @@ services:
     build:
       context: ./catalog_frontend
       dockerfile: Dockerfile
-    image: catalog_frontend
+    image: catalog-frontend
     ports:
       - 80:80
     depends_on:

@@ -1,5 +1,5 @@
 # build stage
-FROM node:8 AS build-stage
+FROM node:8-slim AS build-stage
 LABEL stage=site-builder
 
 WORKDIR /app
