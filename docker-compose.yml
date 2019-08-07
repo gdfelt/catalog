@@ -17,6 +17,7 @@ services:
     image: catalog-backend
     ports:
       - 8000:8000
+    restart: always
     depends_on:
       - database
 

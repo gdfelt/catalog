@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from catalog_backend.catalog_backend.views import HealthCheck
+from catalog_api.views import HealthCheck, Info
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("info/", Info.as_view()),
     path("healthcheck/", HealthCheck.as_view()),
 ]
