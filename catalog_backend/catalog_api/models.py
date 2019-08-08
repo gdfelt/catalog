@@ -22,6 +22,13 @@ class CarPart(models.Model):
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
     date_added = models.DateField()
+    color = models.CharField(max_length=20, blank=True)
+    part_description = models.TextField(blank=True)
 
     def __str__(self):
         return self.part_name
+
+
+class PartPictures(models.Model):
+    part_picture = models.BinaryField()
+    car_part_id = models.ForeignKey(CarPart, on_delete=models.CASCADE)

@@ -17,7 +17,7 @@ services:
     image: catalog-backend
     ports:
       - 8000:8000
-    restart: always
+    #restart: always
     depends_on:
       - database
 
@@ -32,7 +32,7 @@ services:
       - POSTGRES_DB=catalog
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    restart: always
+    #restart: always
 
 volumes:
   postgres_data:
