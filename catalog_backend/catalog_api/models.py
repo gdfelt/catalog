@@ -5,7 +5,7 @@ class CarMake(models.Model):
     make_name = models.CharField(max_length=30, unique=True, null=False)
 
     def __str__(self):
-        return make_name
+        return self.make_name
 
 
 class CarModel(models.Model):
@@ -13,7 +13,7 @@ class CarModel(models.Model):
     associated_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
 
     def __str__(self):
-        return model_name
+        return self.model_name
 
 
 class CarPart(models.Model):
