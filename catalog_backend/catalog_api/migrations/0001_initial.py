@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     initial = True
+    atomic = False
 
     dependencies = []
 
     def generate_superuser(apps, schema_editor):
         from django.contrib.auth.models import User
 
-        # DJANGO_DB_NAME = os.environ.get('DJANGO_DB_NAME', "default")
         DJANGO_SU_NAME = os.environ.get("DJANGO_SU_NAME")
         DJANGO_SU_EMAIL = os.environ.get("DJANGO_SU_EMAIL")
         DJANGO_SU_PASSWORD = os.environ.get("DJANGO_SU_PASSWORD")
@@ -23,4 +23,7 @@ class Migration(migrations.Migration):
 
         superuser.save()
 
-    operations = [migrations.RunPython(generate_superuser)]
+    operations = [migrations.RunPython(generate_superuser), 
+                    migrations.RunSQL("ALTER SYSTEM SET log_connections = True;", ""),
+                    migrations.RunSQL("ALTER SYSTEM SET log_disconnections = True;", ""),
+                    migrations.RunSQL("ALTER SYSTEM SET log_timezone = 'US/Central';", "")]

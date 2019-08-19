@@ -25,5 +25,5 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'info/', Info.as_view()),
     path(r'healthcheck/', HealthCheck.as_view()),
-    path(r'api/', CarPartList.as_view())
+    path(r'parts/', CarPartList.as_view())
 ]
