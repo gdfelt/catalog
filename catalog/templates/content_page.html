@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+
+{% block body %}
+<div>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <div class="navbar-brand col-md-3 mr-0 px-3">Parts Catalog</div>
+        <ul class="navbar-nav px-3">
+            <!-- <li class="nav-item text-nowrap">Sign in</li> -->
+            <li class="nav-item text-nowrap">
+                <a class="nav-link">Sign out</a>
+            </li>
+        </ul>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">One</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Two</a>
+                        </li>
+                        <li><a href="#">Three</a></li>
+                        <li><a href="#">Four</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}
