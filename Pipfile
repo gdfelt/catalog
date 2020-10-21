@@ -10,6 +10,8 @@ flake8 = "*"
 [packages]
 django = "*"
 psycopg2 = "*"
+uuid = "*"
+qrcode = "*"
 
 [requires]
 python_version = "3.8"
